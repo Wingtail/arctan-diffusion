@@ -72,8 +72,8 @@ bash scripts/same_timestep/ettm1.sh
 ```
 
 Each script usually runs:
-1) Pretraining with `arctandiff_train_diffusion_only_stripped.py`
-2) Fine-tuning with `arctandiff_finetune_forecast_stripped.py` or `arctandiff_finetune_classification_stripped.py`
+1) Pretraining with `arctandiff_train_diffusion_only.py`
+2) Fine-tuning with `arctandiff_finetune_forecast.py` or `arctandiff_finetune_classification.py`
 
 ### Script groups
 

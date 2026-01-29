@@ -56,17 +56,17 @@ for loss_type in $loss_types; do
       ;;
   esac
 
-  linear_probe_run_tag="lp_${DATA}_${loss_type}_patch_${patch_size}_hidden_${hidden_size}_recon_${recon_head_depth}_stripped"
+  linear_probe_run_tag="lp_${DATA}_${loss_type}_patch_${patch_size}_hidden_${hidden_size}_recon_${recon_head_depth}"
   linear_probe_save_dir="${linear_probe_save_root}/${linear_probe_run_tag}"
   model_save_dir="${linear_probe_model_root}/${linear_probe_run_tag}"
 
-  pretrain_dir_default="arctandiffusion_eeg_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}"
+  pretrain_dir_default="arctandiffusion_eeg_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}"
   pretrain_dir="$pretrain_dir_default"
   if [ -n "$pretrain_override" ]; then
     pretrain_dir="$pretrain_override"
   elif [ ! -d "$pretrain_dir" ]; then
     pretrain_dir="$(find . -maxdepth 2 -type d \
-      -name "arctandiffusion_eeg_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}*" \
+      -name "arctandiffusion_eeg_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}*" \
       2>/dev/null | head -n 1)"
   fi
 
@@ -99,7 +99,7 @@ for loss_type in $loss_types; do
 
   if [ -z "$ckpt_override" ] && { [ "${FORCE_FINETUNE:-0}" -eq 1 ] || [ ! -f "$combined_ckpt" ]; }; then
     echo "Running linear-probe finetune for ${DATA} (${loss_type})."
-    python -u arctandiff_finetune_classification_stripped.py \
+    python -u arctandiff_finetune_classification.py \
       --task_name finetune \
       --is_training 1 \
       --root_path "$ROOT_PATH" \
@@ -129,7 +129,7 @@ for loss_type in $loss_types; do
       --linear_probe_save_dir "$linear_probe_save_dir" \
       --save_model_dir "$model_save_dir" \
       --save_test_metrics_csv \
-      --csv_suffix ${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}_linear_probe
+      --csv_suffix ${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}_linear_probe
     combined_ckpt="$combined_ckpt_default"
   fi
 

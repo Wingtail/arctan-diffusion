@@ -7,7 +7,7 @@ from torch import nn
 from torch.nn import functional as F
 from torch.utils.data import DataLoader, Subset
 
-from arctandiff_model_diffusion_only_stripped import ArcTanDiffusion, extract_semantic_features_jit
+from arctandiff_model_diffusion_only import ArcTanDiffusion, extract_semantic_features_jit
 
 from tqdm import tqdm
 import torch

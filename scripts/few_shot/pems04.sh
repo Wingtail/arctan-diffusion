@@ -35,7 +35,7 @@ for few_shot_ratio in $few_shot_ratios; do
     echo "Few-shot ratio: ${few_shot_ratio}%"
 
     for pred_len in $pred_lens; do
-        python -u arctandiff_finetune_forecast_stripped.py \
+        python -u arctandiff_finetune_forecast.py \
             --task_name finetune \
             --is_training 1 \
             --root_path $root_path \

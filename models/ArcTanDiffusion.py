@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from arctandiff_model_diffusion_only_stripped import ArcTanDiffusion
+from arctandiff_model_diffusion_only import ArcTanDiffusion
 
 
 class ClsHead(nn.Module):

@@ -19,7 +19,7 @@ run_forecast_random_init() {
     suffix_extra=${suffix_extra:-""}
 
     for pred_len in $pred_lens; do
-        python -u arctandiff_finetune_forecast_stripped.py \
+        python -u arctandiff_finetune_forecast.py \
             --task_name finetune \
             --is_training 1 \
             --root_path "$root_path" \
@@ -133,7 +133,7 @@ run_classification_random_init() {
     echo "Running random-init classification finetune for dataset: ${data} (${src_dataset})"
     echo "Running with patch size: $patch_size, hidden size: $hidden_size"
 
-    python -u arctandiff_finetune_classification_stripped.py \
+    python -u arctandiff_finetune_classification.py \
         --task_name finetune \
         --is_training 1 \
         --root_path "$root_path" \
@@ -141,7 +141,7 @@ run_classification_random_init() {
         --model_id "$model_id" \
         --model ArcTanDiffusion \
         --data "$data" \
-        --load_dir "arctandiffusion_${cls_save_tag}_${cls_loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${cls_recon_head_depth}_stripped_lr${cls_lr}_${cls_diffusion_loss_type}_sample_same_timesteps" \
+        --load_dir "arctandiffusion_${cls_save_tag}_${cls_loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${cls_recon_head_depth}_lr${cls_lr}_${cls_diffusion_loss_type}_sample_same_timesteps" \
         --features M \
         --input_len $input_len \
         --label_len 0 \
@@ -162,7 +162,7 @@ run_classification_random_init() {
         --base_model_lr_scale $cls_base_model_lr_scale \
         --random_init 1 \
         --save_test_metrics_csv \
-        --csv_suffix ablation_${cls_lr_schedule}_${cls_loss_type}_lr_${cls_lr}_epoch_to_load_${cls_epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${cls_recon_head_depth}_stripped_lr${cls_lr}_${cls_diffusion_loss_type}_sample_same_timesteps_random_init
+        --csv_suffix ablation_${cls_lr_schedule}_${cls_loss_type}_lr_${cls_lr}_epoch_to_load_${cls_epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${cls_recon_head_depth}_lr${cls_lr}_${cls_diffusion_loss_type}_sample_same_timesteps_random_init
 }
 
 # HAR

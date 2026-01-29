@@ -41,7 +41,7 @@ linear_probe_save_dir="${linear_probe_save_root}/${linear_probe_run_tag}"
 model_save_dir="${linear_probe_model_root}/${linear_probe_run_tag}"
 
 for pred_len in $pred_lens; do
-    python -u arctandiff_finetune_forecast_stripped.py \
+    python -u arctandiff_finetune_forecast.py \
         --task_name finetune \
         --is_training 1 \
         --root_path $root_path \

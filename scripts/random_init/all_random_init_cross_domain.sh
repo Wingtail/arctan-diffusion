@@ -19,7 +19,7 @@ run_forecast_random_init() {
     suffix_extra=${suffix_extra:-""}
 
     for pred_len in $pred_lens; do
-        python -u arctandiff_finetune_forecast_stripped.py \
+        python -u arctandiff_finetune_forecast.py \
             --task_name finetune \
             --is_training 1 \
             --root_path "$root_path" \

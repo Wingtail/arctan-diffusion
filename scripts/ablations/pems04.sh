@@ -46,7 +46,7 @@ model_save_dir="${linear_probe_model_root}/${linear_probe_run_tag}"
 
 
 echo "Running for dataset: $src_dataset with same timesteps"
-python -u arctandiff_train_diffusion_only_stripped.py \
+python -u arctandiff_train_diffusion_only.py \
     --task_name pretrain \
     --is_training 1 \
     --root_path $root_path \
@@ -78,7 +78,7 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --experiment_name "${src_dataset}_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_${timestep_sampling}_lr${lr}_${diffusion_loss_type}"
 
 for pred_len in $pred_lens; do
-    python -u arctandiff_finetune_forecast_stripped.py \
+    python -u arctandiff_finetune_forecast.py \
         --task_name finetune \
         --is_training 1 \
         --root_path $root_path \
@@ -119,7 +119,7 @@ echo "Running for dataset: $src_dataset with different loss types"
 for loss_type in "huber" "mse"; do
     echo "Loss type: $loss_type"
 
-    python -u arctandiff_train_diffusion_only_stripped.py \
+    python -u arctandiff_train_diffusion_only.py \
         --task_name pretrain \
         --is_training 1 \
         --root_path $root_path \
@@ -152,7 +152,7 @@ for loss_type in "huber" "mse"; do
         --experiment_name "${src_dataset}_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_${timestep_sampling}_lr${lr}_${diffusion_loss_type}_same_timesteps"
 
     for pred_len in $pred_lens; do
-        python -u arctandiff_finetune_forecast_stripped.py \
+        python -u arctandiff_finetune_forecast.py \
             --task_name finetune \
             --is_training 1 \
             --root_path $root_path \
@@ -194,7 +194,7 @@ echo "Running for dataset: $src_dataset with different loss types"
 for diffusion_loss_type in "x0" "e"; do
     echo "Diffusion loss type: $diffusion_loss_type"
 
-    python -u arctandiff_train_diffusion_only_stripped.py \
+    python -u arctandiff_train_diffusion_only.py \
         --task_name pretrain \
         --is_training 1 \
         --root_path $root_path \
@@ -227,7 +227,7 @@ for diffusion_loss_type in "x0" "e"; do
         --experiment_name "${src_dataset}_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_${timestep_sampling}_lr${lr}_${diffusion_loss_type}_same_timesteps"
 
     for pred_len in $pred_lens; do
-        python -u arctandiff_finetune_forecast_stripped.py \
+        python -u arctandiff_finetune_forecast.py \
             --task_name finetune \
             --is_training 1 \
             --root_path $root_path \
@@ -270,7 +270,7 @@ loss_type="arctan"
 diffusion_loss_type="v"
 echo "1 Head depth ablation for dataset: $src_dataset"
 
-python -u arctandiff_train_diffusion_only_stripped.py \
+python -u arctandiff_train_diffusion_only.py \
     --task_name pretrain \
     --is_training 1 \
     --root_path $root_path \
@@ -303,7 +303,7 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --experiment_name "${src_dataset}_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_${timestep_sampling}_lr${lr}_${diffusion_loss_type}_same_timesteps"
 
 for pred_len in $pred_lens; do
-    python -u arctandiff_finetune_forecast_stripped.py \
+    python -u arctandiff_finetune_forecast.py \
         --task_name finetune \
         --is_training 1 \
         --root_path $root_path \

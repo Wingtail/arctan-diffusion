@@ -32,7 +32,7 @@ for few_shot_ratio in $few_shot_ratios; do
 
     echo "Few-shot ratio: ${few_shot_ratio}%"
 
-    python -u arctandiff_finetune_classification_stripped.py \
+    python -u arctandiff_finetune_classification.py \
         --task_name finetune \
         --is_training 1 \
         --root_path $root_path \
@@ -40,7 +40,7 @@ for few_shot_ratio in $few_shot_ratios; do
         --model_id $model_id \
         --model ArcTanDiffusion \
         --data $data \
-        --load_dir "arctandiffusion_har_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}_sample_same_timesteps" \
+        --load_dir "arctandiffusion_har_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}_sample_same_timesteps" \
         --features M \
         --input_len $input_len \
         --label_len 0 \
@@ -60,7 +60,7 @@ for few_shot_ratio in $few_shot_ratios; do
         --start_lr $lr \
         --few_shot_ratio $few_shot_ratio \
         --few_shot_seed $few_shot_seed \
-        --csv_suffix ${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}_sample_same_timesteps_${few_shot_tag} \
+        --csv_suffix ${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}_sample_same_timesteps_${few_shot_tag} \
         --base_model_lr_scale 1.0 \
         --save_test_metrics_csv
 

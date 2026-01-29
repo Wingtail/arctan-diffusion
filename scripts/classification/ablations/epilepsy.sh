@@ -28,7 +28,7 @@ echo "Running for dataset: $src_dataset"
 echo "Running with patch size: $patch_size, hidden size: $hidden_size"
 
 echo "Running for dataset: $src_dataset without same timesteps"
-python -u arctandiff_train_diffusion_only_stripped.py \
+python -u arctandiff_train_diffusion_only.py \
     --task_name pretrain \
     --is_training 1 \
     --root_path $root_path \
@@ -36,7 +36,7 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --model_id $model_id \
     --model ArcTanDiffusion \
     --data $data \
-    --save_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}" \
+    --save_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}" \
     --features M \
     --input_len $input_len \
     --label_len 0 \
@@ -58,9 +58,9 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --diffusion_loss_type $diffusion_loss_type \
     --model_type all_dit \
     --train_epochs $epoch_to_load \
-    --experiment_name "Epilepsy_pretrain_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}"
+    --experiment_name "Epilepsy_pretrain_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}"
 
-python -u arctandiff_finetune_classification_stripped.py \
+python -u arctandiff_finetune_classification.py \
     --task_name finetune \
     --is_training 1 \
     --root_path $root_path \
@@ -68,7 +68,7 @@ python -u arctandiff_finetune_classification_stripped.py \
     --model_id $model_id \
     --model ArcTanDiffusion \
     --data $data \
-    --load_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}" \
+    --load_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}" \
     --features M \
     --input_len $input_len \
     --label_len 0 \
@@ -87,14 +87,14 @@ python -u arctandiff_finetune_classification_stripped.py \
     --epoch_to_load $epoch_to_load \
     --start_lr 0.001 \
     --save_test_metrics_csv \
-    --csv_suffix ablation_${lr_schedule}_${loss_type}_lr_${lr}_epoch_to_load_${epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type} \
+    --csv_suffix ablation_${lr_schedule}_${loss_type}_lr_${lr}_epoch_to_load_${epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type} \
     --base_model_lr_scale 1.0 \
     --save_test_metrics_csv
 
 # Same timestep ablation
 
 echo "Running for dataset: $src_dataset with same timesteps (ablation)"
-python -u arctandiff_train_diffusion_only_stripped.py \
+python -u arctandiff_train_diffusion_only.py \
     --task_name pretrain \
     --is_training 1 \
     --root_path $root_path \
@@ -102,7 +102,7 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --model_id $model_id \
     --model ArcTanDiffusion \
     --data $data \
-    --save_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}_sample_same_timesteps" \
+    --save_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}_sample_same_timesteps" \
     --features M \
     --input_len $input_len \
     --label_len 0 \
@@ -125,9 +125,9 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --sample_same_timesteps \
     --model_type all_dit \
     --train_epochs $epoch_to_load \
-    --experiment_name "Epilepsy_pretrain_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}_sample_same_timesteps"
+    --experiment_name "Epilepsy_pretrain_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}_sample_same_timesteps"
 
-python -u arctandiff_finetune_classification_stripped.py \
+python -u arctandiff_finetune_classification.py \
     --task_name finetune \
     --is_training 1 \
     --root_path $root_path \
@@ -135,7 +135,7 @@ python -u arctandiff_finetune_classification_stripped.py \
     --model_id $model_id \
     --model ArcTanDiffusion \
     --data $data \
-    --load_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}_sample_same_timesteps" \
+    --load_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}_sample_same_timesteps" \
     --features M \
     --input_len $input_len \
     --label_len 0 \
@@ -154,7 +154,7 @@ python -u arctandiff_finetune_classification_stripped.py \
     --epoch_to_load $epoch_to_load \
     --start_lr 0.001 \
     --save_test_metrics_csv \
-    --csv_suffix ablation_${lr_schedule}_${loss_type}_lr_${lr}_epoch_to_load_${epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}_sample_same_timesteps \
+    --csv_suffix ablation_${lr_schedule}_${loss_type}_lr_${lr}_epoch_to_load_${epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}_sample_same_timesteps \
     --base_model_lr_scale 1.0 \
     --save_test_metrics_csv
 
@@ -164,7 +164,7 @@ echo "Running for dataset: $src_dataset with different loss types"
 for loss_type in "huber" "mse"; do
     echo "Loss type: $loss_type"
 
-    python -u arctandiff_train_diffusion_only_stripped.py \
+    python -u arctandiff_train_diffusion_only.py \
         --task_name pretrain \
         --is_training 1 \
         --root_path $root_path \
@@ -172,7 +172,7 @@ for loss_type in "huber" "mse"; do
         --model_id $model_id \
         --model ArcTanDiffusion \
         --data $data \
-        --save_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}" \
+        --save_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}" \
         --features M \
         --input_len $input_len \
         --label_len 0 \
@@ -194,9 +194,9 @@ for loss_type in "huber" "mse"; do
         --diffusion_loss_type $diffusion_loss_type \
         --model_type all_dit \
         --train_epochs $epoch_to_load \
-        --experiment_name "Epilepsy_pretrain_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}"
+        --experiment_name "Epilepsy_pretrain_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}"
 
-    python -u arctandiff_finetune_classification_stripped.py \
+    python -u arctandiff_finetune_classification.py \
         --task_name finetune \
         --is_training 1 \
         --root_path $root_path \
@@ -204,7 +204,7 @@ for loss_type in "huber" "mse"; do
         --model_id $model_id \
         --model ArcTanDiffusion \
         --data $data \
-        --load_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}" \
+        --load_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}" \
         --features M \
         --input_len $input_len \
         --label_len 0 \
@@ -223,7 +223,7 @@ for loss_type in "huber" "mse"; do
         --epoch_to_load $epoch_to_load \
         --start_lr 0.001 \
         --save_test_metrics_csv \
-        --csv_suffix ablation_${lr_schedule}_${loss_type}_lr_${lr}_epoch_to_load_${epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type} \
+        --csv_suffix ablation_${lr_schedule}_${loss_type}_lr_${lr}_epoch_to_load_${epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type} \
         --base_model_lr_scale 1.0 \
         --save_test_metrics_csv
 done
@@ -234,7 +234,7 @@ echo "Running for dataset: $src_dataset with different diffusion loss types"
 for diffusion_loss_type in "x0" "e"; do
     echo "Diffusion loss type: $diffusion_loss_type"
 
-    python -u arctandiff_train_diffusion_only_stripped.py \
+    python -u arctandiff_train_diffusion_only.py \
         --task_name pretrain \
         --is_training 1 \
         --root_path $root_path \
@@ -242,7 +242,7 @@ for diffusion_loss_type in "x0" "e"; do
         --model_id $model_id \
         --model ArcTanDiffusion \
         --data $data \
-        --save_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}" \
+        --save_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}" \
         --features M \
         --input_len $input_len \
         --label_len 0 \
@@ -264,9 +264,9 @@ for diffusion_loss_type in "x0" "e"; do
         --diffusion_loss_type $diffusion_loss_type \
         --model_type all_dit \
         --train_epochs $epoch_to_load \
-        --experiment_name "Epilepsy_pretrain_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}"
+        --experiment_name "Epilepsy_pretrain_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}"
 
-    python -u arctandiff_finetune_classification_stripped.py \
+    python -u arctandiff_finetune_classification.py \
         --task_name finetune \
         --is_training 1 \
         --root_path $root_path \
@@ -274,7 +274,7 @@ for diffusion_loss_type in "x0" "e"; do
         --model_id $model_id \
         --model ArcTanDiffusion \
         --data $data \
-        --load_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}" \
+        --load_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}" \
         --features M \
         --input_len $input_len \
         --label_len 0 \
@@ -293,7 +293,7 @@ for diffusion_loss_type in "x0" "e"; do
         --epoch_to_load $epoch_to_load \
         --start_lr 0.001 \
         --save_test_metrics_csv \
-        --csv_suffix ablation_${lr_schedule}_${loss_type}_lr_${lr}_epoch_to_load_${epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type} \
+        --csv_suffix ablation_${lr_schedule}_${loss_type}_lr_${lr}_epoch_to_load_${epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type} \
         --base_model_lr_scale 1.0 \
         --save_test_metrics_csv
 done
@@ -304,7 +304,7 @@ loss_type="arctan"
 diffusion_loss_type="v"
 echo "1 Head depth ablation for dataset: $src_dataset"
 
-python -u arctandiff_train_diffusion_only_stripped.py \
+python -u arctandiff_train_diffusion_only.py \
     --task_name pretrain \
     --is_training 1 \
     --root_path $root_path \
@@ -312,7 +312,7 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --model_id $model_id \
     --model ArcTanDiffusion \
     --data $data \
-    --save_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}" \
+    --save_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}" \
     --features M \
     --input_len $input_len \
     --label_len 0 \
@@ -334,9 +334,9 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --diffusion_loss_type $diffusion_loss_type \
     --model_type all_dit \
     --train_epochs $epoch_to_load \
-    --experiment_name "Epilepsy_pretrain_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}"
+    --experiment_name "Epilepsy_pretrain_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}"
 
-python -u arctandiff_finetune_classification_stripped.py \
+python -u arctandiff_finetune_classification.py \
     --task_name finetune \
     --is_training 1 \
     --root_path $root_path \
@@ -344,7 +344,7 @@ python -u arctandiff_finetune_classification_stripped.py \
     --model_id $model_id \
     --model ArcTanDiffusion \
     --data $data \
-    --load_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}" \
+    --load_dir "arctandiffusion_epilepsy_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}" \
     --features M \
     --input_len $input_len \
     --label_len 0 \
@@ -363,6 +363,6 @@ python -u arctandiff_finetune_classification_stripped.py \
     --epoch_to_load $epoch_to_load \
     --start_lr 0.001 \
     --save_test_metrics_csv \
-    --csv_suffix ablation_${lr_schedule}_${loss_type}_lr_${lr}_epoch_to_load_${epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type} \
+    --csv_suffix ablation_${lr_schedule}_${loss_type}_lr_${lr}_epoch_to_load_${epoch_to_load}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type} \
     --base_model_lr_scale 1.0 \
     --save_test_metrics_csv

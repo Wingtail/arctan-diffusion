@@ -26,7 +26,7 @@ for pems in $pems_data; do
 
     echo "Running with patch size: $patch_size, hidden size: $hidden_size"
 
-    python -u arctandiff_train_diffusion_only_stripped.py \
+    python -u arctandiff_train_diffusion_only.py \
         --task_name pretrain \
         --is_training 1 \
         --root_path ./datasets/PEMS/ \
@@ -57,7 +57,7 @@ for pems in $pems_data; do
         --experiment_name "${pems}_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_${timestep_sampling}_lr${lr}_${diffusion_loss_type}"
 
     for pred_len in $pred_lens; do
-        python -u arctandiff_finetune_forecast_stripped.py \
+        python -u arctandiff_finetune_forecast.py \
             --task_name finetune \
             --is_training 1 \
             --root_path ./datasets/PEMS/ \
@@ -104,7 +104,7 @@ for pems in $pems_data; do
     linear_probe_save_dir="${linear_probe_save_root}/${linear_probe_run_tag}"
     model_save_dir="${linear_probe_model_root}/${linear_probe_run_tag}"
 
-    python -u arctandiff_train_diffusion_only_stripped.py \
+    python -u arctandiff_train_diffusion_only.py \
         --task_name pretrain \
         --is_training 1 \
         --root_path ./datasets/PEMS/ \
@@ -136,7 +136,7 @@ for pems in $pems_data; do
         --experiment_name "${pems}_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_${timestep_sampling}_lr${lr}_${diffusion_loss_type}"
 
     for pred_len in $pred_lens; do
-        python -u arctandiff_finetune_forecast_stripped.py \
+        python -u arctandiff_finetune_forecast.py \
             --task_name finetune \
             --is_training 1 \
             --root_path ./datasets/PEMS/ \

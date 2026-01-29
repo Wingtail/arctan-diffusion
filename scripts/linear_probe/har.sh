@@ -21,7 +21,7 @@ src_dataset="HAR.csv"
 model_id="HAR"
 data="HAR"
 
-python -u arctandiff_finetune_classification_stripped.py \
+python -u arctandiff_finetune_classification.py \
     --task_name finetune \
     --is_training 1 \
     --root_path $root_path \
@@ -29,7 +29,7 @@ python -u arctandiff_finetune_classification_stripped.py \
     --model_id $model_id \
     --model ArcTanDiffusion \
     --data $data \
-    --load_dir "arctandiffusion_har_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}_sample_same_timesteps" \
+    --load_dir "arctandiffusion_har_${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}_sample_same_timesteps" \
     --features M \
     --input_len $input_len \
     --label_len 0 \
@@ -47,6 +47,6 @@ python -u arctandiff_finetune_classification_stripped.py \
     --include_cls 0 \
     --epoch_to_load $epoch_to_load \
     --start_lr $lr \
-    --csv_suffix ${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_stripped_lr${lr}_${diffusion_loss_type}_sample_same_timesteps_linear_probe \
+    --csv_suffix ${loss_type}_patch_size_${patch_size}_hidden_size_${hidden_size}_recon_head_${recon_head_depth}_lr${lr}_${diffusion_loss_type}_sample_same_timesteps_linear_probe \
     --base_model_lr_scale $base_model_lr_scale \
     --save_test_metrics_csv

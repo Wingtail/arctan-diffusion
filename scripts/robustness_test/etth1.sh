@@ -113,7 +113,7 @@ for loss_type in $loss_types; do
 
   if [ -z "$ckpt_override" ] && { [ "${FORCE_FINETUNE:-0}" -eq 1 ] || [ ! -f "$combined_ckpt" ]; }; then
     echo "Running linear-probe finetune for ${loss_type}."
-    python -u arctandiff_finetune_forecast_stripped.py \
+    python -u arctandiff_finetune_forecast.py \
         --task_name finetune \
         --is_training 1 \
         --root_path "$root_path" \

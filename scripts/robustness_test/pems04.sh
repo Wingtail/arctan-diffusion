@@ -79,7 +79,7 @@ for pred_len in $pred_lens; do
 
   if [ -z "$ckpt_override" ] && { [ "${FORCE_FINETUNE:-0}" -eq 1 ] || [ ! -f "$combined_ckpt" ]; }; then
     echo "Running linear-probe finetune for pred_len ${pred_len}."
-    python -u arctandiff_finetune_forecast_stripped.py \
+    python -u arctandiff_finetune_forecast.py \
         --task_name finetune \
         --is_training 1 \
         --root_path "$ROOT_PATH" \
