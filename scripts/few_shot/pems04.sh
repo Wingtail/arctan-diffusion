@@ -1,7 +1,7 @@
 #!/bin/sh
 
-epoch_to_load=20
-finetune_train_epochs=50
+epoch_to_load=50
+finetune_train_epochs=10
 pred_lens="12 24 36 48"
 
 timestep_sampling="uniform"

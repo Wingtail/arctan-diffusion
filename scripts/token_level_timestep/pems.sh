@@ -1,6 +1,6 @@
 #!/bin/sh
 
-epoch_to_load=20
+epoch_to_load=50
 finetune_train_epochs=10
 pred_lens="12 24 36 48"
 linear_probe_save_root="./outputs/linear_probe_checkpoints"

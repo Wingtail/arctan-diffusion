@@ -5,7 +5,7 @@ DATA=PEMS04
 ROOT_PATH=./datasets/PEMS
 DATA_PATH=${DATA}.npz
 
-epoch_to_load=20
+epoch_to_load=50
 finetune_train_epochs=10
 pred_lens=${PRED_LENS:-"12 24 36 48"}
 input_len=96
