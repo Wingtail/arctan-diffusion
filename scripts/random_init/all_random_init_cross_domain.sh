@@ -136,7 +136,7 @@ suffix_extra="_sample_same_timesteps"
 run_forecast_random_init
 
 # PEMS03/04/07/08
-epoch_to_load=20
+epoch_to_load=50
 pred_lens="12 24 36 48"
 num_heads=8
 hidden_size=128
