@@ -38,6 +38,7 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --num_heads $num_heads \
     --n_layers 2 \
     --lr $lr \
+    --instance_norm 0 \
     --downstream_task classification \
     --timestep_sampling $timestep_sampling \
     --recon_head_depth $recon_head_depth \

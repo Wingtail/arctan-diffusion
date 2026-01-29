@@ -48,6 +48,7 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --num_heads $num_heads \
     --n_layers $n_layers \
     --lr $lr \
+    --instance_norm 0 \
     --downstream_task classification \
     --timestep_sampling $timestep_sampling \
     --recon_head_depth $recon_head_depth \
@@ -113,6 +114,7 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --num_heads $num_heads \
     --n_layers $n_layers \
     --lr $lr \
+    --instance_norm 0 \
     --downstream_task classification \
     --timestep_sampling $timestep_sampling \
     --recon_head_depth $recon_head_depth \
@@ -182,6 +184,7 @@ for loss_type in "huber" "mse"; do
         --num_heads $num_heads \
         --n_layers $n_layers \
         --lr $lr \
+        --instance_norm 0 \
         --downstream_task classification \
         --timestep_sampling $timestep_sampling \
         --recon_head_depth $recon_head_depth \
@@ -251,6 +254,7 @@ for diffusion_loss_type in "x0" "e"; do
         --num_heads $num_heads \
         --n_layers $n_layers \
         --lr $lr \
+        --instance_norm 0 \
         --downstream_task classification \
         --timestep_sampling $timestep_sampling \
         --recon_head_depth $recon_head_depth \
@@ -320,6 +324,7 @@ python -u arctandiff_train_diffusion_only_stripped.py \
     --num_heads $num_heads \
     --n_layers $n_layers \
     --lr $lr \
+    --instance_norm 0 \
     --downstream_task classification \
     --timestep_sampling $timestep_sampling \
     --recon_head_depth $recon_head_depth \
